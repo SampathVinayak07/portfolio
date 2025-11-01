@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sampath Vinayak Gurram — DevOps • Machine Learning • Data Analysis</title>
+  <meta name="description" content="Portfolio of Sampath Vinayak Gurram — DevOps, ML, and Data Analysis. Projects: Medicinal Plant ID, Multilingual QA, Crop Classification, Deployments." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #070316; /* deep */
+      --bg-2: #0b0720;
+      --card: rgba(255,255,255,0.03);
+      --muted: #b9c3d3;
+      --accent: #7c3aed; /* purple */
+      --accent-2: #a78bfa;
+      --glass: rgba(255,255,255,0.03);
+      --white: #e6eef8;
+      --mono: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--white);font-family:var(--mono);-webkit-font-smoothing:antialiased}
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{position:fixed;left:0;right:0;top:0;z-index:80;background:linear-gradient(180deg, rgba(4,6,12,0.55), rgba(4,6,12,0.15));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    nav.container{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px;box-shadow:0 8px 30px rgba(124,58,237,0.12)}
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px;font-size:14px}
+    .nav-links a.active, .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.02)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 12px;border-radius:10px;color:white;text-decoration:none;font-weight:600}
+
+    main{padding-top:92px}
+    section{padding:56px 0}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
+
+    /* Hero */
+    .intro h2{font-size:36px;margin:0 0 8px;line-height:1.02}
+    .typing{color:var(--accent-2);font-weight:700}
+    .intro p{color:var(--muted);margin:10px 0 18px;max-width:60ch}
+    .kpis{display:flex;gap:12px;margin-top:18px}
+    .kpi{background:var(--glass);padding:12px 14px;border-radius:12px;color:var(--white);min-width:140px}
+    .kpi small{display:block;color:var(--muted);font-size:12px}
+    .kpi strong{display:block;margin-top:6px}
+
+    /* Profile card */
+    .profile{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .avatar{width:100%;height:260px;border-radius:10px;background-image:url('images/profile.jpg');background-size:cover;background-position:center;margin-bottom:12px}
+    /* NOTE: drop your profile image at images/profile.jpg to replace the avatar */
+    .profile h3{margin:0 0 6px}
+    .profile p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Sections */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    h3.section-title{color:var(--accent);margin-bottom:12px}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .skill{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);transition:transform .24s}
+    .skill:hover{transform:translateY(-6px)}
+    .skill img{width:48px;height:48px;object-fit:contain}
+    .skill .meta b{display:block}
+    .skill .meta small{color:var(--muted)}
+
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .project{padding:16px;border-radius:12px;background:linear-gradient(90deg, rgba(124,58,237,0.04), rgba(124,58,237,0.02));border:1px solid rgba(255,255,255,0.03);transition:transform .2s}
+    .project:hover{transform:translateY(-8px)}
+    .project h4{margin:0 0 6px}
+    .techs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* Internships */
+    .internships-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .intern .skills-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+
+    /* Contact */
+    .contact-row{display:flex;gap:18px;align-items:center}
+    .socials{display:flex;gap:14px}
+    .socials a{width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);text-decoration:none}
+
+    footer{padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media(max-width:980px){.hero{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:1fr}.internships-grid{grid-template-columns:1fr}.profile .avatar{height:180px}}
+    @media(max-width:520px){.skills-grid{grid-template-columns:repeat(2,1fr)}nav.container{padding:12px}}
+
+    /* Animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:all 600ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* small helper */
+    .muted{color:var(--muted)}
+    a.no-deco{text-decoration:none;color:inherit}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="brand">
+        <!-- If you want your photo in the top-left logo, replace the SV text with:
+             <img src="images/profile.jpg" alt="Sampath" style="width:52px;height:52px;border-radius:12px;object-fit:cover;border:2px solid rgba(167,139,250,0.15);" />
+             otherwise SV remains.
+         -->
+        <div class="logo" id="logo">SV</div>
+        <div>
+          <h1 style="font-size:15px">Sampath Vinayak Gurram</h1>
+          <p class="muted" style="font-size:12px">DevOps • Machine Learning • Data Analysis</p>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#internships" class="nav-link">Internships</a>
+        <a href="#simulations" class="nav-link">Simulations</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="intro panel reveal">
+        <h2>Hi, I'm <span class="typing" id="typing"></span></h2>
+        <p>I am a Computer Science graduate (GMRIT, 2025) specializing in DevOps, Machine Learning and Data Analysis. I design scalable CI/CD pipelines, containerize applications, and productionize ML models with robust monitoring and automation.</p>
+        <div class="kpis">
+          <div class="kpi"><small>Primary</small><strong>DevOps • ML</strong></div>
+          <div class="kpi"><small>Languages</small><strong>Python, Java, C, SQL</strong></div>
+          <div class="kpi"><small>Location</small><strong>Visakhapatnam</strong></div>
+        </div>
+      </div>
+
+      <aside class="profile panel reveal">
+        <!-- avatar uses images/profile.jpg; drop your photo there to replace -->
+        <div class="avatar" id="hero-avatar"></div>
+        <h3>Sampath Vinayak Gurram</h3>
+        <p class="muted">Aspiring DevOps & ML Engineer with hands-on experience in CI/CD, Docker, GitHub Actions, and deploying ML services on AWS. I enjoy converting prototypes into production systems and optimizing end-to-end workflows.</p>
+        <div style="margin-top:12px"><small class="muted">Contact</small><div class="muted">gurramsampathvinayak@gmail.com • +91 6302347392</div></div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="panel reveal">
+        <h3 class="section-title">About</h3>
+        <p class="muted">I'm a results-driven Computer Science graduate from GMR Institute of Technology (2025) with a strong programming foundation and practical experience in DevOps and machine learning. I've led projects involving image classification, multilingual NLP, and deployed ML models using containerization and CI/CD. During internships I built reliable pipelines for model testing, automated builds, and cloud deployments. I enjoy working closely with data scientists and engineers to bridge the gap between research and production.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+  <h3 class="section-title">Skills</h3>
+  <div class="panel skills-grid reveal">
+
+    <!-- Programming Languages -->
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><div class="meta"><b>Python</b><small class="muted">Machine Learning, Scripting, Automation</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><div class="meta"><b>Java</b><small class="muted">OOP, Backend Development</small></div></div>
+    <div class="skill"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/C.svg" alt="C"><div class="meta"><b>C</b><small class="muted">Systems Programming, Data Structures</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><div class="meta"><b>JavaScript</b><small class="muted">Frontend Logic, Interactivity</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><div class="meta"><b>HTML</b><small class="muted">Web Structure & Markup</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><div class="meta"><b>CSS</b><small class="muted">Styling & Responsive Design</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"><div class="meta"><b>SQL</b><small class="muted">Database Management, MySQL</small></div></div>
+
+    <!-- DevOps Tools -->
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><div class="meta"><b>Docker</b><small class="muted">Containerization, Environment Setup</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"><div class="meta"><b>Linux</b><small class="muted">Shell Scripting, Server Management</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"><div class="meta"><b>Jenkins</b><small class="muted">CI/CD Pipeline Automation</small></div></div>
+    <div class="skill"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Light.svg" alt="GitHub"><div class="meta"><b>Git & GitHub</b><small class="muted">Version Control, Collaboration</small></div></div>
+    <div class="skill"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/AWS-Light.svg" alt="AWS"><div class="meta"><b>AWS</b><small class="muted">EC2 Deployment, Cloud Hosting</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sonarqube/sonarqube-original.svg" alt="SonarQube"><div class="meta"><b>SonarQube</b><small class="muted">Code Quality & Static Analysis</small></div></div>
+
+    <!-- Data Analytics -->
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"><div class="meta"><b>Pandas</b><small class="muted">Data Cleaning & Manipulation</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"><div class="meta"><b>NumPy</b><small class="muted">Scientific Computing, Arrays</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib"><div class="meta"><b>Matplotlib</b><small class="muted">Data Visualization</small></div></div>
+    <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI"><div class="meta"><b>Power BI</b><small class="muted">Dashboarding & analytics</small></div></div>
+
+    <!-- ML / DL / NLP -->
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"><div class="meta"><b>TensorFlow</b><small class="muted">Deep Learning Framework</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" alt="Keras"><div class="meta"><b>Keras</b><small class="muted">Neural Networks, DL Models</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"><div class="meta"><b>PyTorch</b><small class="muted">Model Building, NLP Tasks</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"><div class="meta"><b>OpenCV</b><small class="muted">Computer Vision, Image Processing</small></div></div>
+
+    <!-- Frameworks & Tools -->
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"><div class="meta"><b>Django</b><small class="muted">Backend Development</small></div></div>
+    <div class="skill"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Flask-Light.svg" alt="Flask"><div class="meta"><b>Flask</b><small class="muted">Web App Deployment</small></div></div>
+    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="Kaggle"><div class="meta"><b>Kaggle</b><small class="muted">Model Training & Evaluation</small></div></div>
+  </div>
+</section>
+
+
+    <section id="projects">
+  <h3 class="section-title">Projects</h3>
+  <div class="projects-grid reveal">
+
+    <!-- Project 1 -->
+    <div class="project">
+      <h4>Medicinal Plants Identification & Recommendation</h4>
+      <p>
+        Developed a deep learning model based on Capsule Networks (CapsNet) to accurately identify medicinal plants from leaf images. 
+        Integrated a hybrid recommendation system to suggest medicinal uses and similar plants based on image features and taxonomy. 
+        Enhanced accuracy and interpretability through advanced image preprocessing, augmentation, and feature extraction techniques.
+      </p>
+      <div class="techs"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">OpenCV</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project">
+      <h4>Multilingual Question Answering System</h4>
+      <p>
+        Built a multilingual QA model capable of answering questions in Telugu, Tamil, and Hindi using mBERT (Multilingual BERT) for better contextual understanding in underrepresented languages. 
+        Fine-tuned on language-specific datasets and optimized tokenization for improved accuracy and inference speed. 
+        Hosted the model on Hugging Face for public access and evaluation.
+      </p>
+      <div class="techs"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Transformers</span><span class="tag">mBERT</span><span class="tag">NLP</span><span class="tag">Kaggle</span></div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project" onclick="window.open('https://github.com/SampathVinayak07/Devops_Project1','_blank')" style="cursor:pointer">
+      <h4>Crop Classification with Recommendation System</h4>
+      <p>
+        Developed a complete DevOps pipeline for a crop classification and recommendation web application. 
+        Automated the build, test, and deployment process using GitHub Actions, Docker, and AWS EC2. 
+        Integrated model serving and monitoring for continuous improvement. 
+        Ensured scalability and fault tolerance through container orchestration.
+      </p>
+      <div class="techs"><span class="tag">Flask</span><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">GitHub</span><span class="tag">CI/CD</span><span class="tag">Automation</span></div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project" onclick="window.open('https://github.com/SampathVinayak07/DevopsGit','_blank')" style="cursor:pointer">
+      <h4>Bangalore Home Prices — Deployment</h4>
+      <p>
+        Containerized and deployed a Machine Learning regression model for predicting Bangalore home prices using Docker and AWS EC2. 
+        Implemented a continuous integration workflow for automated builds and pushed Docker images to Docker Hub. 
+        Optimized deployment performance and ensured consistent environment replication.
+      </p>
+      <div class="techs"><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">Flask</span><span class="tag">DevOps</span><span class="tag">Automation</span></div>
+    </div>
+
+  </div>
+</section>
+
+
+  <section id="internships">
+  <h3 class="section-title">Internships</h3>
+  <div class="projects-grid reveal">
+
+    <div class="project">
+      <h4>DevOps Intern — Nlite Asia Private Limited</h4>
+      <span class="intern-type" style="display:inline-block; background-color:#4CAF50; color:white; padding:4px 12px; border-radius:15px; font-size:0.85rem; margin-top:6px;">Semester Internship</span>
+      <p>Worked as a DevOps intern for an entire semester, focusing on automation, deployment, and continuous integration workflows. Designed and implemented CI/CD pipelines using Jenkins and GitHub Actions to automate build, test, and deployment processes. Containerized applications using Docker and deployed them on AWS EC2 instances. Integrated SonarQube for code quality assurance and applied rollback strategies for deployment reliability. Gained hands-on experience in cloud resource management, monitoring, and scalability optimization.</p>
+      <div class="techs">
+        <span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">AWS EC2</span><span class="tag">SonarQube</span><span class="tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h4>Web Development Intern — Global Coach IT Academy</h4>
+      <span class="intern-type" style="display:inline-block; background-color:#2196F3; color:white; padding:4px 12px; border-radius:15px; font-size:0.85rem; margin-top:6px;">Summer Internship</span>
+      <p>Developed and deployed a fully functional e-commerce website using Django as part of a summer internship. Designed backend APIs, managed database operations with MySQL, and implemented secure authentication systems. Created responsive frontend interfaces with HTML, CSS, and JavaScript to ensure seamless user interaction. Worked collaboratively in an agile environment, integrating deployment and testing workflows to enhance project reliability and scalability.</p>
+      <div class="techs">
+        <span class="tag">Django</span><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="simulations">
+  <h3 class="section-title">Simulations / Virtual Experience</h3>
+  <div class="projects-grid reveal">
+    
+    <div class="project">
+      <h4>Data Analytics & Visualization Job Simulation</h4>
+      <p><em>Certificate of Completion — April 17th, 2024</em></p>
+      <p>Completed a professional job simulation focused on understanding real-world business data challenges. Worked through stages of project understanding, data cleaning and modeling, visualization, and storytelling to effectively communicate insights. Delivered client-ready presentations under simulated consulting conditions.</p>
+      <div class="techs">
+        <span class="tag">Data Analysis</span><span class="tag">Visualization</span><span class="tag">Storytelling</span><span class="tag">Forage</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h4>Power BI Job Simulation</h4>
+      <p><em>Certificate of Completion — May 9th, 2024</em></p>
+      <p>Completed an industry-standard Power BI job simulation, working on data-driven projects such as call centre trend analysis, customer retention insights, and diversity & inclusion dashboards. Applied real-world Power BI techniques for creating impactful visualizations and reports aligned with business goals.</p>
+      <div class="techs">
+        <span class="tag">Power BI</span><span class="tag">Data Visualization</span><span class="tag">Business Analytics</span><span class="tag">Forage</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <section id="contact">
+      <h3 class="section-title">Contact</h3>
+      <div class="panel reveal contact-row">
+        <div>
+          <p class="muted">Email: <a class="no-deco" href="mailto:gurramsampathvinayak@gmail.com">gurramsampathvinayak@gmail.com</a></p>
+          <p class="muted">Phone: <a class="no-deco" href="tel:+916302347392">+91 6302347392</a></p>
+          <div style="margin-top:12px" class="socials">
+            <a title="LinkedIn" href="https://www.linkedin.com/in/sampathvinayakgurram/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="28"/></a>
+            <a title="GitHub" href="https://github.com/SampathVinayak07" target="_blank"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Light.svg" alt="GitHub" width="28"/></a>
+            <a title="Email" href="mailto:gurramsampathvinayak@gmail.com"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Email" width="28"/></a>
+          </div>
+        </div>
+        <div style="min-width:300px">
+          <form onsubmit="submitForm(event)">
+            <input id="name" placeholder="Your name" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);margin-bottom:8px" required/>
+            <input id="email" type="email" placeholder="Your email" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);margin-bottom:8px" required/>
+            <textarea id="msg" placeholder="Message" rows="5" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);margin-bottom:8px" required></textarea>
+            <button style="background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:10px 14px;border-radius:8px;color:white;cursor:pointer">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="muted">© 2025 Sampath Vinayak Gurram • Built with ❤️</p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS
+  (function() {
+    emailjs.init("ZjqDA52SMmzM_VBgr"); // <-- your public key
+  })();
+
+  // Typing animation (guarded)
+  (function(){
+    const typingEl = document.getElementById('typing');
+    if (!typingEl) return;
+    const phrases = [
+      "Sampath Vinayak Gurram",
+      "Aspiring DevOps Engineer",
+      "Machine Learning Enthusiast",
+      "Data Analyst Enthusiast"
+    ];
+    let idx = 0, char = 0, forward = true;
+    function typeLoop(){
+      const current = phrases[idx];
+      typingEl.textContent = current.slice(0, char);
+      if (forward) {
+        if (char < current.length) char++;
+        else { forward = false; setTimeout(typeLoop,800); return; }
+      } else {
+        if (char > 0) char--;
+        else { forward = true; idx = (idx+1) % phrases.length; }
+      }
+      setTimeout(typeLoop, forward ? 80 : 40);
+    }
+    typeLoop();
+  })();
+
+  // Smooth scroll and active link
+  (function(){
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.nav-link').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Scroll spy (safe checks)
+    window.addEventListener('scroll', () => {
+      const fromTop = window.scrollY + 120;
+      navLinks.forEach(link => {
+        const selector = link.getAttribute('href');
+        const section = document.querySelector(selector);
+        if (!section) return;
+        if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          document.querySelectorAll('.nav-link').forEach(x => x.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+  })();
+
+  // Reveal on scroll with correct IntersectionObserver signature and fallback
+  (function(){
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => obs.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+  })();
+
+  // Form submission using EmailJS
+  function submitForm(e) {
+    e.preventDefault();
+
+    const params = {
+      from_name: document.getElementById('name').value,
+      email_id: document.getElementById('email').value,
+      message: document.getElementById('msg').value
+    };
+
+    emailjs.send("service_cgzmm3p", "template_lixaj5r", params)
+      .then(function(response) {
+        alert("✅ Message sent successfully!");
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('msg').value = '';
+      }, function(error) {
+        alert("❌ Failed to send message. Please try again later.");
+        console.error("EmailJS error:", error);
+      });
+  }
+
+  // Optional: Replace top-left SV with your profile image if the file exists (images/profile.jpg)
+  (function(){
+    const logo = document.getElementById('logo');
+    const imgPath = 'images/profile.jpg';
+    const img = new Image();
+    img.src = imgPath;
+    img.onload = () => {
+      img.style.width = '52px';
+      img.style.height = '52px';
+      img.style.borderRadius = '12px';
+      img.style.objectFit = 'cover';
+      img.style.border = '2px solid rgba(167,139,250,0.12)';
+      logo.innerHTML = '';
+      logo.appendChild(img);
+      const heroAvatar = document.getElementById('hero-avatar');
+      if (heroAvatar) heroAvatar.style.backgroundImage = `url('${imgPath}')`;
+    };
+  })();
+</script>
+
+</body>
+</html>
