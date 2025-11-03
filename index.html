@@ -19,7 +19,7 @@
       --mono: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;padding:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--white);font-family:var(--mono);-webkit-font-smoothing:antialiased}
+    html,body{height:100%;margin:0;padding:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--white);font-family:var(--mono);-webkit-font-smoothing:antialiased;scroll-behavior:smooth;} /* Added smooth scroll */
 
     /* Layout */
     .container{max-width:1100px;margin:0 auto;padding:28px}
@@ -36,6 +36,10 @@
 
     main{padding-top:92px}
     section{padding:56px 0}
+    section[id] {
+      scroll-margin-top: 92px;
+    }
+
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
 
     /* Hero */
@@ -50,7 +54,6 @@
     /* Profile card */
     .profile{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
     .avatar{width:100%;height:260px;border-radius:10px;background-image:url('images/profile.jpg');background-size:cover;background-position:center;margin-bottom:12px}
-    /* NOTE: drop your profile image at images/profile.jpg to replace the avatar */
     .profile h3{margin:0 0 6px}
     .profile p{margin:0;color:var(--muted);font-size:14px}
 
@@ -86,10 +89,6 @@
 
     footer{padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
 
-    /* Responsive */
-    @media(max-width:980px){.hero{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:1fr}.internships-grid{grid-template-columns:1fr}.profile .avatar{height:180px}}
-    @media(max-width:520px){.skills-grid{grid-template-columns:repeat(2,1fr)}nav.container{padding:12px}}
-
     /* Animations */
     .reveal{opacity:0;transform:translateY(18px);transition:all 600ms cubic-bezier(.2,.9,.2,1)}
     .reveal.visible{opacity:1;transform:none}
@@ -97,18 +96,48 @@
     /* small helper */
     .muted{color:var(--muted)}
     a.no-deco{text-decoration:none;color:inherit}
-  </style>
+
+    /* --- RESPONSIVE STYLES START HERE --- */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .skills-grid{grid-template-columns:repeat(3,1fr)}
+      .projects-grid{grid-template-columns:1fr}
+      .internships-grid{grid-template-columns:1fr}
+      .profile .avatar{height:320px}
+      
+      nav.container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        padding-top: 8px;
+      }
+
+      main {
+        padding-top: 180px !important;
+      }
+
+      section[id] {
+        scroll-margin-top: 170px;
+      }
+    }
+    @media(max-width:520px){
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .kpis { flex-direction: column; align-items: stretch; }
+      .kpi { min-width: auto; }
+      .contact-row { flex-direction: column; align-items: stretch; }
+      .intro h2 { font-size: 30px; }
+    }
+</style>
 </head>
 <body>
   <header>
     <nav class="container">
       <div class="brand">
-        <!-- If you want your photo in the top-left logo, replace the SV text with:
-             <img src="images/profile.jpg" alt="Sampath" style="width:52px;height:52px;border-radius:12px;object-fit:cover;border:2px solid rgba(167,139,250,0.15);" />
-             otherwise SV remains.
-         -->
-        <div class="logo" id="logo"> <img src="images/profile.jpg" alt="Profile Photo" 
-       style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(167,139,250,0.25);" />
+        <div class="logo" id="logo">
+          <img src="images/profile.jpg" alt="Profile Photo" style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;" />
         </div>
         <div>
           <h1 style="font-size:15px">Sampath Vinayak Gurram</h1>
@@ -126,7 +155,7 @@
         <a href="#contact" class="nav-link">Contact</a>
       </div>
     </nav>
-  </header>
+</header>
 
   <main class="container">
     <section id="home" class="hero">
